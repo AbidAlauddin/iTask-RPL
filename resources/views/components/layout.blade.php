@@ -375,7 +375,7 @@
 
     // Logo URLs
     const lightLogo = 'images/logo.png';
-    const darkLogo = 'images/1logo Dark.png'; // Replace with your desired dark mode logo URL
+    const darkLogo = 'images/logo Dark.png'; // Replace with your desired dark mode logo URL
 
     // Dark Mode Functions
     const enableDarkMode = () => {
