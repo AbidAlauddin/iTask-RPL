@@ -30,7 +30,7 @@ class ProfileController extends Controller
             'new_confirm_password' => ['same:new_password'],
         ]);
 
-        $user->update(['password' => $request->new_password]);
+        $user->update(['password' => bcrypt($request->new_password)]);
 
         return redirect()->route('profile.edit', $user)->with("success", "Password successfully changed!");
     }
@@ -45,15 +45,14 @@ class ProfileController extends Controller
             'avatar' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
         ]);
 
-        if ($request->avatar != null) {
-            $imagepath = request('avatar')->store('uploads', 'public');
-
+        if ($request->hasFile('avatar')) {
+            $imagepath = $request->file('avatar')->store('uploads', 'public');
             $attributes['avatar'] = "/storage/" . $imagepath;
-
-            Storage::delete(str_replace('/storage', '/public', $user->avatar));
-
-            $user->update($attributes);
+            if ($user->avatar && $user->avatar !== '/uploads/user-avatar.webp') {
+                Storage::delete(str_replace('/storage', 'public', $user->avatar));
+            }
         }
+        
 
         $user->update($attributes);
 
