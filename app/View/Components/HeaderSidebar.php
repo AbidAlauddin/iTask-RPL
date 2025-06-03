@@ -4,22 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class AppLayout extends Component
+class HeaderSidebar extends Component
 {
-    public $title;
-    public $tasksDueSoon;
-
     /**
      * Create a new component instance.
      *
-     * @param string|null $title
-     * @param array|null $tasksDueSoon
      * @return void
      */
-    public function __construct($title = null, $tasksDueSoon = null)
+    public function __construct()
     {
-        $this->title = $title;
-        $this->tasksDueSoon = $tasksDueSoon;
+        //
     }
 
     /**
@@ -29,6 +23,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('components.app-layout');
+        return view('components.header-sidebar');
     }
 }

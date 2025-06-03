@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -12,6 +18,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AllTaskController;
 
 Route::view('/', 'home');
+Route::view('/dashboard', 'dashboard');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('register', [RegisterController::class, 'create'])->name('register');
@@ -29,9 +36,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('all-task', AllTaskController::class)->name('all-task');
     Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update/{user}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
     Route::put('/profile/changepassword/{user}', [ProfileController::class, 'changepassword'])->name('profile.changepassword');
     Route::delete('/profile/delete/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
     Route::resource('lists', CategoryController::class);
     Route::resource('lists.tasks', CategoryTaskController::class)->except('show', 'index');
 });
+
+

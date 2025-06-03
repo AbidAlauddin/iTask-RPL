@@ -1,20 +1,26 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
+        "dev": "vite",
+        "development": "vite",
+        "watch": "vite",
+        "watch-poll": "vite",
+        "hot": "vite",
+        "prod": "vite build",
+        "production": "vite build"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.0",
         "axios": "^0.21",
         "laravel-mix": "^6.0.6",
+        "laravel-vite-plugin": "^1.2.0",
         "lodash": "^4.17.19",
         "postcss": "^8.4.5",
-        "tailwindcss": "^3.0.2"
+        "tailwindcss": "^3.0.2",
+        "vite": "^6.3.5"
+    },
+    "dependencies": {
+        "alpinejs": "^3.14.9",
+        "toastr": "^2.1.4"
     }
 }

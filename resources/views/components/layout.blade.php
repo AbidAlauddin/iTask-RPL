@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>@isset($title){{ $title }} -@endisset To Do App</title>
+    
 </head>
 
 <body class="antialiased">
     <div class="bg-white text-slate-700 dark:text-slate-200  min-h-screen dark:bg-slate-900">
         <div class="font-sans max-w-3xl mx-auto p-6 md:p-16">
-            <h1 class="text-center"><a href="/"><span class="text-center font-semibold leading-tight text-4xl mb-0">i</span><span class="text-center font-thin leading-tight text-5xl mb-0">Task</span></a></h1>
-            <h2 class="text-lg text-center mb-6">Simple to-do app</h2>
-
+            <img class="mx-auto w-auto" src="{{ asset('images/Logo.png') }}" alt="Your Logo" style="height: 200px;">
+    
             {{-- Dark mode toggle --}}
             <div class="flex justify-center items-center space-x-2 mb-16">
                 <span class="text-sm text-gray-800 dark:text-gray-500">Light</span>
@@ -24,6 +24,9 @@
                 <span class="text-sm text-gray-400 dark:text-white">Dark</span>
                 <input id="toggle" type="checkbox" class="hidden">
             </div>
+
+            <!-- <h1 class="text-center"><a href="/"><span class="text-center font-semibold leading-tight text-4xl mb-0">i</span><span class="text-center font-thin leading-tight text-5xl mb-0">Task</span></a></h1> -->
+            <h2 class="text-lg text-center mb-1">Simple to-do app</h2>
 
             @guest
             <nav class="mx-auto max-w-full mb-16 sm:py-4" aria-label="guest navigation">

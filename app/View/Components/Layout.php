@@ -3,23 +3,25 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Category;
 
-class AppLayout extends Component
+class Layout extends Component
 {
     public $title;
-    public $tasksDueSoon;
+    public $lists;
 
     /**
      * Create a new component instance.
      *
-     * @param string|null $title
-     * @param array|null $tasksDueSoon
      * @return void
      */
-    public function __construct($title = null, $tasksDueSoon = null)
+    public function __construct($title = null)
     {
         $this->title = $title;
-        $this->tasksDueSoon = $tasksDueSoon;
+        // Get the first list for the authenticated user
+        if (auth()->check()) {
+            $this->lists = Category::where('user_id', auth()->id())->first();
+        }
     }
 
     /**
@@ -29,6 +31,6 @@ class AppLayout extends Component
      */
     public function render()
     {
-        return view('components.app-layout');
+        return view('components.layout');
     }
 }
